@@ -1,6 +1,6 @@
 pipeline {
     agent any 
-    
+
     stages{
         stage("Clone Code"){
             steps {
@@ -18,17 +18,16 @@ pipeline {
             steps {
                 echo "Pushing the image to docker hub"
                 withCredentials([usernamePassword(credentialsId:"dockerHub",passwordVariable:"dockerHubPass",usernameVariable:"dockerHubUser")]){
-                sh "docker tag pro2 ${env.dockerHubUser}/pro2:latest"
-                sh "docker login -u ${env.dockerHubUser} -p ${env.dockerHubPass}"
-                sh "docker push ${env.dockerHubUser}/pro2:latest"
+                    sh 'docker tag pro2 ${dockerHubUser}/pro2:latest'
+                    sh 'docker login -u ${dockerHubUser} -p "${dockerHubPass}"'
+                    sh 'docker push ${dockerHubUser}/pro2:latest'
                 }
             }
         }
         stage("Deploy"){
             steps {
                 echo "Deploying the container"
-                sh "docker-compose down && docker-compose up -d"
-                
+                sh "docker run -d -p 8000:8000  pro2:latest "
             }
         }
     }

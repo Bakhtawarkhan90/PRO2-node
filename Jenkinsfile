@@ -5,7 +5,7 @@ pipeline {
         stage("Clone Code"){
             steps {
                 echo "Cloning the code"
-                git url:"https://github.com/Bakhtawarkhan90/PRO2-node.git", branch: "main"
+                git url:"https://github.com/Bakhtawarkhan90/PRO2-node.git", branch: "master"
             }
         }
         stage("Build"){

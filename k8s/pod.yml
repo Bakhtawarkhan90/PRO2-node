@@ -8,6 +8,6 @@ metadata:
 spec:
  containers:
   - name: note-app
-    image:  bakhtawar375/pro2:atest
+    image:  bakhtawar375/pro2:latest
     ports:
      - containerPort: 8000

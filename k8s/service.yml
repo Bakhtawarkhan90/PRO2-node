@@ -10,5 +10,5 @@ spec:
      web: note
   ports:
     - targetPort: 8000  # Container port
-      port: 8000          # Node internal port
-      nodePort: 30005   # Port on which the service exposes to the outside world
+    -  port: 8000          # Node internal port
+    - nodePort: 30005   # Port on which the service exposes to the outside world
